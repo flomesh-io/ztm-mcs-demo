@@ -57,6 +57,7 @@ Before you begin, ensure the following are installed on your machine:
 
 * **Docker**: For running containers.
 * **k3d**: For creating lightweight Kubernetes clusters.
+* **kubectl**: For interacting with Kubernetes clusters.
 
 ## Setting Up Two Isolated Kubernetes Clusters with k3d
 
