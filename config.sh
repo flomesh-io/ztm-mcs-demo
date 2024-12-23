@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Host IP
-HOST_IP=$(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}')
+HOST_IP=$(ifconfig | awk '/inet / && $2 != "127.0.0.1" {print $2; exit}')
 
 # Cluster names
 CLUSTER1="cluster1"
