@@ -14,7 +14,6 @@ deploy_test_pod() {
 # Function to get the IP address of a test pod
 get_pod_ip() {
     local context=$1
-    echo "Retrieving IP address of test pod in context $context..."
     kubectl --context $context get pod $TEST_POD_NAME -o jsonpath='{.status.podIP}'
 }
 
@@ -35,7 +34,9 @@ deploy_test_pod k3d-$CLUSTER1
 deploy_test_pod k3d-$CLUSTER2
 
 # Get pod IPs
+echo "Retrieving IP address of test pod in context k3d-$CLUSTER1..."
 POD_IP_CLUSTER1=$(get_pod_ip k3d-$CLUSTER1)
+echo "Retrieving IP address of test pod in context k3d-$CLUSTER2..."
 POD_IP_CLUSTER2=$(get_pod_ip k3d-$CLUSTER2)
 
 if [ -z "$POD_IP_CLUSTER1" ] || [ -z "$POD_IP_CLUSTER2" ]; then

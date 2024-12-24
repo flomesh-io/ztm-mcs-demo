@@ -79,6 +79,7 @@ spec:
     configMap:
       name: $AGENT_CONFIGMAP_NAME
 EOF
+    kubectl --context k3d-$cluster_name wait --for=condition=Ready pod/ztm-agent --timeout=30s
     kubectl --context k3d-$cluster_name expose pod ztm-agent --name=ztm-agent --type=ClusterIP
     echo "ztm-agent deployed to $cluster_name."
 }
